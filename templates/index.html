@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune University Student Support Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with logo and title -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='images/pune_university_logo.png') }}" alt="Pune University Logo" class="logo">
+                </div>
+                <h1 class="title">
+                    <span class="icon-book">📚</span> 
+                    Pune University Student Support Hub 
+                    <span class="icon-book">📚</span>
+                </h1>
+            </div>
+        </div>
+        
+        <!-- Main navigation tabs -->
+        <div class="tabs">
+            <div class="tabs-container">
+                <button class="tab-button active" data-tab="chat">
+                    <i class="fas fa-comment-dots"></i> Chat
+                </button>
+                <button class="tab-button" data-tab="quick-access">
+                    <i class="fas fa-bolt"></i> Quick Access
+                </button>
+                <button class="tab-button" data-tab="resources">
+                    <i class="fas fa-book"></i> Resources
+                </button>
+                <button class="tab-button" data-tab="notifications">
+                    <i class="fas fa-bell"></i> Notifications
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main content area -->
+        <div class="content-area">
+            <!-- Chat tab content -->
+            <div class="tab-content active" id="chat-tab">
+                <div class="chat-container">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-header-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="chat-header-text">
+                                <h2>University Assistant</h2>
+                                <p>Ask me anything about Pune University</p>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message bot">
+                                <div class="message-avatar">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div class="message-bubble">
+                                    <p>👋 Welcome to Pune University Support Hub!</p>
+                                    <p>How can I help you today?</p>
+                                    <div class="message-time">
+                                        <i class="far fa-clock"></i> Just now
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Suggestion chips removed as requested -->
+                    </div>
+                    
+                    <!-- Fixed chat input at bottom -->
+                    <div class="chat-input-fixed">
+                        <div class="chat-input-container">
+                            <input type="text" id="message-input" placeholder="Type your message here..." autocomplete="off">
+                            <div class="chat-tools">
+                                <button class="chat-tool-button" title="Emoji">
+                                    <i class="far fa-smile"></i>
+                                </button>
+                                <button id="send-button" title="Send Message">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Access tab content -->
+            <div class="tab-content" id="quick-access-tab">
+                <div class="quick-access-container">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <h2>Quick Access</h2>
+                        </div>
+                        <p>Select a category to get instant information about university services and procedures</p>
+                    </div>
+                    
+                    <div class="quick-access-grid">
+                        <div class="quick-access-card" data-category="Admission Process">
+                            <div class="qa-card-header">
+                                <div class="qa-card-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                            </div>
+                            <div class="qa-card-content">
+                                <h3>Admission Process</h3>
+                                <p>Learn about admission procedures, eligibility criteria, and important application dates.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-access-card" data-category="Exam Schedule">
+                            <div class="qa-card-header">
+                                <div class="qa-card-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <div class="qa-card-content">
+                                <h3>Exam Schedule</h3>
+                                <p>Check examination dates, time tables, and result announcement timelines.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-access-card" data-category="Fee Structure">
+                            <div class="qa-card-header">
+                                <div class="qa-card-icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                            </div>
+                            <div class="qa-card-content">
+                                <h3>Fee Structure</h3>
+                                <p>Information about course fees, payment schedules, and accepted payment methods.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-access-card" data-category="Scholarship Info">
+                            <div class="qa-card-header">
+                                <div class="qa-card-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                            </div>
+                            <div class="qa-card-content">
+                                <h3>Scholarship Info</h3>
+                                <p>Details about available scholarships, eligibility criteria, and application process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-access-result" id="quick-access-result">
+                        <h3>Select a category above to view information</h3>
+                        <div id="quick-access-content"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resources tab content -->
+            <div class="tab-content" id="resources-tab">
+                <div class="resources-container">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <h2>University Resources</h2>
+                        </div>
+                        <p>Access important links, downloads, and resources to help you succeed</p>
+                    </div>
+                    
+                    <div class="resources-list" id="resources-list">
+                        <div class="loading-container">
+                            <div class="loading-spinner"></div>
+                            <div class="loading-text">Loading resources...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notifications tab content -->
+            <div class="tab-content" id="notifications-tab">
+                <div class="notifications-container">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <h2>Notifications</h2>
+                        </div>
+                        <p>Stay updated with important university announcements and news</p>
+                    </div>
+                    
+                    <div class="official-notifications-link">
+                        <p><strong>For latest notifications and updates, visit the official university portal:</strong></p>
+                        <a href="http://sppudocs.unipune.ac.in/sites/news_events/Lists/News%20and%20Announcements/DispForm.aspx?ID=8257" 
+                        target="_blank" class="university-link">
+                            <i class="fas fa-external-link-alt"></i> Pune University Official Notifications
+                        </a>
+                    </div>
+                    
+                    <div class="notifications-list" id="notifications-list">
+                        <div class="loading-container">
+                            <div class="loading-spinner"></div>
+                            <div class="loading-text">Loading notifications...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript files -->
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/quick-access.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/resources.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/notifications.js') }}"></script>
+</body>
+</html>

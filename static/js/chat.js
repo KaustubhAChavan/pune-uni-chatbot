@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const speakButton = document.createElement('button');
             speakButton.classList.add('speak-button');
             speakButton.setAttribute('data-text', text);
-            speakButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+            // speakButton.innerHTML = '<i class="fas fa-volume-up"></i>';
             
             speakButton.addEventListener('click', function() {
                 speakText(text);

@@ -65,7 +65,7 @@ class ChatService:
         
         return {
             "response": response.content,
-            "sources": sources
+            # "sources": sources
         }
     
     def get_response_for_sms(self, user_query: str) -> str:
